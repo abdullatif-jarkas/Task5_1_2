@@ -58,6 +58,17 @@ nextBtn.addEventListener("click", () => {
 let indicatorArr = document.querySelectorAll('.indicator');
 indicatorArr.forEach((indicator, index) => {
   indicator.addEventListener('click', () => {
-    sliders.style.left = `-${index * 100}%`
+    sliders.style.left = `${index * -100}%`;
+    counter = index * -100;
+    if(index * -100 == 0) {
+      prevBtn.classList.add('disabled')
+      nextBtn.classList.remove('disabled')
+    } else if (index * -100 == (indicatorArr.length - 1) * -100) {
+      prevBtn.classList.remove('disabled')
+      nextBtn.classList.add('disabled')
+    } else {
+      prevBtn.classList.remove('disabled')
+      nextBtn.classList.remove('disabled')
+    }
   })
 })
